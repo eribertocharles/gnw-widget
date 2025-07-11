@@ -13,7 +13,7 @@
 
   <!-- Optional: give the page a neutral background -->
   <style>
-    body { margin:0; }
+    body { margin: 0; }
   </style>
 </head>
 
@@ -23,17 +23,26 @@
   </div>
 
   <script>
-    /* Log activity (optional but matches GNW sample) */
+    // Log activity (optional but matches GNW sample)
     var userActivityUrl =
       'https://www.globenewswire.com/SocialMediaActivity/Log' +
       '?activity=jsWidgetRefreshed&context=89166';
 
-    /* Initialize the feed */
+    // Initialize the widget
     GetWidget(
       'https://www.globenewswire.com/JsonData/organization/' +
       'vaHQa-1E64HA5y2CIMe9Gg%3d%3d?callback=?',
       'Press Releases'
     );
+
+    // After widget loads, ensure all links open in a new tab
+    setTimeout(() => {
+      const links = document.querySelectorAll('#gnw_widget a');
+      links.forEach(link => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      });
+    }, 2000); // Wait to ensure widget content has rendered
   </script>
 </body>
 </html>
