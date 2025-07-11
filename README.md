@@ -1,0 +1,2 @@
+# gnw-widget
+GlobalNewsWire
