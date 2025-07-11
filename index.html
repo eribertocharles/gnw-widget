@@ -13,6 +13,11 @@
 
   <style>
     body { margin: 0; }
+
+    /* Hide the empty widget title/header */
+    .gnw_widget_header {
+      display: none !important;
+    }
   </style>
 </head>
 
@@ -27,14 +32,14 @@
       'https://www.globenewswire.com/SocialMediaActivity/Log' +
       '?activity=jsWidgetRefreshed&context=89166';
 
-    // Initialize the widget
+    // Initialize the widget with no title
     GetWidget(
       'https://www.globenewswire.com/JsonData/organization/' +
-      'vaHQa-1E64HA5y2CIMe9Gg%3d%3d?callback=?'
-	// News header title (above '')
+      'vaHQa-1E64HA5y2CIMe9Gg%3d%3d?callback=?',
+      ''
     );
 
-    // Fix for Safari / macOS: Intercept clicks and use window.open()
+    // Fix for Safari / macOS: Intercept clicks and open in new tab
     setTimeout(() => {
       const container = document.getElementById('gnw_widget');
       if (!container) return;
