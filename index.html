@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>GlobeNewswire Widget</title>
+
+  <!-- GlobeNewswire CSS -->
+  <link rel="stylesheet"
+        href="https://www.globenewswire.com/content/css/gnw_widgetstyles.css">
+
+  <!-- GlobeNewswire script -->
+  <script src="https://www.globenewswire.com/Scripts/gnw_widget.js"></script>
+
+  <!-- Optional: give the page a neutral background -->
+  <style>
+    body { margin:0; }
+  </style>
+</head>
+
+<body>
+  <div class="widget__width-height--container">
+    <div id="gnw_widget" class="gnw_content_container"></div>
+  </div>
+
+  <script>
+    /* Log activity (optional but matches GNW sample) */
+    var userActivityUrl =
+      'https://www.globenewswire.com/SocialMediaActivity/Log' +
+      '?activity=jsWidgetRefreshed&context=89166';
+
+    /* Initialize the feed */
+    GetWidget(
+      'https://www.globenewswire.com/JsonData/organization/' +
+      'vaHQa-1E64HA5y2CIMe9Gg%3d%3d?callback=?',
+      'Press Releases'
+    );
+  </script>
+</body>
+</html>
