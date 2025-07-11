@@ -11,7 +11,6 @@
   <!-- GlobeNewswire script -->
   <script src="https://www.globenewswire.com/Scripts/gnw_widget.js"></script>
 
-  <!-- Optional: give the page a neutral background -->
   <style>
     body { margin: 0; }
   </style>
@@ -23,7 +22,7 @@
   </div>
 
   <script>
-    // Log activity (optional but matches GNW sample)
+    // Optional activity logging
     var userActivityUrl =
       'https://www.globenewswire.com/SocialMediaActivity/Log' +
       '?activity=jsWidgetRefreshed&context=89166';
@@ -35,14 +34,19 @@
       'Press Releases'
     );
 
-    // After widget loads, ensure all links open in a new tab
+    // Fix for Safari / macOS: Intercept clicks and use window.open()
     setTimeout(() => {
-      const links = document.querySelectorAll('#gnw_widget a');
-      links.forEach(link => {
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener noreferrer');
+      const container = document.getElementById('gnw_widget');
+      if (!container) return;
+
+      container.addEventListener('click', function(e) {
+        const anchor = e.target.closest('a');
+        if (anchor && anchor.href) {
+          e.preventDefault();
+          window.open(anchor.href, '_blank', 'noopener');
+        }
       });
-    }, 2000); // Wait to ensure widget content has rendered
+    }, 2000);
   </script>
 </body>
 </html>
